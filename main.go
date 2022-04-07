@@ -15,6 +15,7 @@ import (
 	"os"
 	"path"
 
+	"github.com/NYTimes/gziphandler"
 	"github.com/oschwald/maxminddb-golang"
 	"github.com/realclientip/realclientip-go"
 )
@@ -36,7 +37,7 @@ func main() {
 	if addr == "" {
 		addr = "localhost:8080"
 	}
-	http.HandleFunc("/v1.json", handleV1JSON(db))
+	http.Handle("/v1.json", gziphandler.GzipHandler(handleV1JSON(db)))
 	log.Printf("Listening on %q", addr)
 	err = http.ListenAndServe(addr, nil)
 	log.Fatalf("listening on %q %v", addr, err)
