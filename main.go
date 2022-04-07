@@ -120,6 +120,7 @@ type Location struct {
 		Code string `maxminddb:"code" json:"code"`
 	} `maxminddb:"postal" json:"postal"`
 	Subdivisions []struct {
+		Names   Names  `maxminddb:"names" json:"names"`
 		IsoCode string `maxminddb:"iso_code" json:"iso_code"`
 	} `maxminddb:"subdivisions" json:"subdivisions"`
 	Traits struct {
