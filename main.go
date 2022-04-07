@@ -121,6 +121,10 @@ type Location struct {
 	Subdivisions []struct {
 		IsoCode string `maxminddb:"iso_code" json:"iso_code"`
 	} `maxminddb:"subdivisions" json:"subdivisions"`
+	Traits struct {
+		IsAnonymousProxy    bool `maxminddb:"is_anonymous_proxy" json:"is_anonymous_proxy"`
+		IsSatelliteProvider bool `maxminddb:"is_satellite_provider" json:"is_satellite_provider"`
+	} `maxminddb:"traits" json:"traits"`
 }
 
 // Names could be unmarshalled into a map[string]string, but only returning the en names for now.
