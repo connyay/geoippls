@@ -106,6 +106,7 @@ type Location struct {
 		Names Names `maxminddb:"names" json:"names"`
 	} `maxminddb:"continent" json:"continent"`
 	Country struct {
+		Names   Names  `maxminddb:"names" json:"names"`
 		IsoCode string `maxminddb:"iso_code"  json:"iso_code" `
 	} `maxminddb:"country" json:"country"`
 	Location struct {
