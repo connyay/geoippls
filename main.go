@@ -99,10 +99,10 @@ func mmdbFromTarBall(mmdbBytes []byte) ([]byte, error) {
 // Location captures the relevant data from the GeoIP database lookup.
 type Location struct {
 	City struct {
-		Names map[string]string `maxminddb:"names" json:"names"`
+		Names Names `maxminddb:"names" json:"names"`
 	} `maxminddb:"city" json:"city"`
 	Continent struct {
-		Names map[string]string `maxminddb:"names" json:"names"`
+		Names Names `maxminddb:"names" json:"names"`
 	} `maxminddb:"continent" json:"continent"`
 	Country struct {
 		IsoCode string `maxminddb:"iso_code"  json:"iso_code" `
@@ -120,4 +120,9 @@ type Location struct {
 	Subdivisions []struct {
 		IsoCode string `maxminddb:"iso_code" json:"iso_code"`
 	} `maxminddb:"subdivisions" json:"subdivisions"`
+}
+
+// Names could be unmarshalled into a map[string]string, but only returning the en names for now.
+type Names struct {
+	EN string `maxminddb:"en" json:"en"`
 }
